@@ -5,7 +5,13 @@ import { IndexComponent } from './index/index.component';
 const routes: Routes = [
     {
         path: '',
-        component: IndexComponent
+        component: IndexComponent,
+        children: [
+            {
+                path: '',
+                loadChildren: () => import('../../modules/auth/auth.module').then(m => m.AuthModule)
+            }
+        ]
     }
 ]
 

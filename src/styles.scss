@@ -1,6 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { 
+@import '~@angular/material/_theming.scss';
+
+@include mat-core();
+
+$primary: mat-palette($mat-blue,800);
+$desktop: 960px;
+$tablet: 768px;
+$mobile-large: 640px;
+$mobile: 480px;
+$mobile-small: 300px;
+
+html{ 
     height: 100%; 
 }
 
@@ -8,3 +19,156 @@ body {
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
+
+.bg-gradient-primary {
+    background-color: #4e73df;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    width: 80%;
+    height: max-content;
+    margin: auto auto;
+    @media only screen and (max-width: $mobile){
+        width: 90% !important;
+    }
+
+}
+
+.login-content{
+    width: 80%;
+    max-width: 1140px;
+    height: 535px;
+    max-height: 535px;
+}
+
+.bg-auth {
+    background: url('assets/img/bg_auth.svg');
+    background-position: center;
+    background-size: cover;
+}
+
+.primary {
+    color: mat-color($primary, default);
+}
+
+.no-cursor{
+    cursor: unset !important;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    position: cover;
+}
+
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+.mat-form-field {
+    width: 100%;
+    margin-top: 16px;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+}
+
+// text 
+.title-login {
+    position: absolute !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-muted {
+    color: #858796 !important;
+}
+
+// with
+
+.w-50 {
+    width: 50% !important;
+}
+
+.w-75 {
+    width: 75% !important;
+
+    @media only screen and (max-width: $mobile-large){
+        width: 100% !important;
+    }
+}
+.w-100 {
+    width: 100% !important;
+}
+
+// heigth
+.h-100 {
+    height: 100% !important;
+}
+
+// margin
+.m-2 {
+    margin: 0.5rem !important;
+}
+
+.ml-2, .mx-2{
+    margin-left: 0.5rem;
+}
+
+
+.mr-2, .mx-2{
+    margin-right: 0.5rem;
+}
+
+.mb-3, .my-3 {
+    margin-bottom: 1rem !important;
+}
+
+.mt-5, .my-5 {
+    margin-top: 3rem !important;
+
+    @media only screen and (max-width: $mobile-large){
+        margin-top: 1.5rem !important;
+    }
+}
+
+.mb-5, .my-5 {
+    margin-bottom: 3rem !important;
+
+    @media only screen and (max-width: $mobile-large){
+        margin-top: 1.5rem !important;
+    }
+}
+
+// padding
+
+.p-0{
+    padding: 0 !important;
+}
+
+.p-1{
+    padding: 0.25rem !important;
+}
+
+.p-3{
+    padding: 1rem !important;
+}
+
+.p-4{
+    padding: 1.5rem !important;
+}
+
+.item{
+    width: 25%;
+    display: inline-block;
+    @media only screen and (max-width: $tablet){
+        width: 50%;
+    }
+    @media only screen and (max-width: $mobile-large){
+        width: 100%;
+    }
+}
+  
