@@ -2,6 +2,7 @@
     <mat-horizontal-stepper linear #stepper>
         <mat-step [stepControl]="formUser" [editable]="editable" label="Usuario">
             <form [formGroup]="formUser" class="mb-3">
+
                 <mat-form-field>
                     <mat-label>Nombre</mat-label>
                     <input 
@@ -14,6 +15,7 @@
                             {{ showError(this.formUser.controls.firstName) }}
                         </mat-error>
                 </mat-form-field>
+
                 <mat-form-field>
                     <mat-label>Apellido</mat-label>
                     <input 
@@ -26,6 +28,7 @@
                             {{ showError(this.formUser.controls.lastName) }}
                         </mat-error>
                 </mat-form-field>
+
                 <mat-form-field>
                     <mat-label>Usuario</mat-label>
                     <input 
@@ -37,20 +40,21 @@
                         <mat-error> 
                             {{ showError(this.formUser.controls.userName) }}
                         </mat-error>
-
                 </mat-form-field>
+
                 <mat-form-field>
                     <mat-label>Clave</mat-label>
                     <input 
                         matInput 
                         type="password"
-                        placeholder="Clave" 
+                        placeholder="Escribe tu clave." 
                         formControlName="password" 
                         required>
                         <mat-error> 
                             {{ showError(this.formUser.controls.password) }}
                         </mat-error>
                 </mat-form-field>
+
                 <mat-form-field>
                     <mat-label>Repita la clave</mat-label>
                     <input 
@@ -63,6 +67,7 @@
                             {{ showError(this.formUser.controls.repeatPassword) }}
                         </mat-error>
                 </mat-form-field>
+                
             </form>
             <div fxLayout="row" fxLayoutAlign="space-between center">
                 <button  mat-raised-button routerLink="/auth"><mat-icon>exit_to_app</mat-icon>Salir</button>
@@ -127,7 +132,11 @@
                 </mat-form-field>
             </form>
             <div fxLayout="row" fxLayoutAlign="space-between center">
-                <button mat-raised-button matStepperPrevious><mat-icon>arrow_back</mat-icon>Volver</button>
+                <button mat-raised-button 
+                        matStepperPrevious>
+                    <mat-icon>arrow_back</mat-icon>
+                    Volver
+                </button>
                 <button mat-raised-button [disabled]="this.formSecurity.invalid" color="primary" (click)="onSubmit(stepper)">Guardar<mat-icon>save</mat-icon></button>
             </div>
         </mat-step>

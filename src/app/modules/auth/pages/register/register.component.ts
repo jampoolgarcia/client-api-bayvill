@@ -4,14 +4,16 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { validEqualsPasswords, validNotEquealQuestions } from 'src/app/validators/app.validator';
 import { HttpErrorResponse } from '@angular/common/http';
 
+// materials
+import { MatStepper } from '@angular/material/stepper';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 // services
 import { AuthService } from '../../service/auth.service';
 
-
 // models
 import { UserI } from '../../model/user';
-import { MatStepper } from '@angular/material/stepper';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
     selector: 'app-register',
