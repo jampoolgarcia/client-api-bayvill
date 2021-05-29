@@ -7,7 +7,7 @@ import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { validNotEquealQuestions, validEqualsPasswords } from 'src/app/validators/app.validator';
 import { UserResetI } from '../../model/user-rest';
-import { AuthService } from '../../service/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
     selector: 'app-reset-password',

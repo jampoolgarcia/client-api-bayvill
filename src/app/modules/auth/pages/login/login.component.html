@@ -41,7 +41,17 @@
                 </mat-icon>
             </button>
         </mat-form-field>
-        <button mat-raised-button color="primary" [disabled]="form.invalid" class="w-75 mb-3">Entrar</button>
+        <button 
+            mat-raised-button
+            type="submit" 
+            color="primary" 
+            [disabled]="getInvalid()" 
+            class="w-75 mb-3">
+            Entrar
+            <div *ngIf="this.isChecked" class="inline">
+                <i class="fa fa-spin fa-sync-alt"></i>
+            </div>
+        </button>
     </form>
     <hr class="primary">
     <a mat-button routerLink="reset-password" class="w-75">¿Olvidaste tu clave?</a>
