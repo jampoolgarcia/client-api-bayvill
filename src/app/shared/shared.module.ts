@@ -10,10 +10,13 @@ import { MaterialModule } from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+//  compoenents
+import { NavComponent } from './components/nav/nav.component';
+
 
 @NgModule({
     declarations: [
-
+        NavComponent,
     ],
     imports: [
         // core modules
@@ -28,11 +31,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         
     ],
     exports: [
+        // core
         ReactiveFormsModule,
         FormsModule,
         MaterialModule,
         FlexLayoutModule,
         CommonModule,
+
+        // components
+        NavComponent,
     ],
     providers: [
 

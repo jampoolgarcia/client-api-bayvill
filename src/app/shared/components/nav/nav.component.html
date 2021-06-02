@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button>
+        <mat-icon>local_hospital</mat-icon>
+    </button>
+    <span>BayVill</span>
+    
+    <span class="spacer"></span>
+
+    <button mat-button [matMenuTriggerFor]="userMenu">
+        <mat-icon>account_circle</mat-icon>
+        <span class="ml-1" fxHide.xs>{{ userName }}</span>
+    </button>
+    <mat-menu #userMenu='matMenu'>
+        <button mat-menu-item>
+            <mat-icon>person</mat-icon>
+            Perfil
+        </button>
+        <button mat-menu-item>
+            <mat-icon>list</mat-icon>
+            Lista de usuarios
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>
+            <mat-icon>logout</mat-icon>
+            Cerrar sesión
+        </button>
+    </mat-menu>
+</mat-toolbar>

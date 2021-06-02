@@ -1,10 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~@angular/material/_theming.scss';  
+@import '~@angular/material/_theming.scss';
 
 @include mat-core();
 
-$primary: mat-palette($mat-blue,800);
+$my-primary: mat-palette($mat-indigo-palette, 500);
+$my-accent: mat-palette($mat-pink-palette, A200, A100, A400);
+$my-warn: mat-palette($mat-red-palette);
+
+
+// tamaños de pantalla.
 $desktop: 960px;
 $tablet: 768px;
 $mobile-large: 640px;
@@ -24,6 +29,10 @@ body {
     display:inline;
 }
 
+.spacer {
+    flex: 1 1 auto;
+}
+
 .bg-gradient-primary {
     background-color: #4e73df;
     background-repeat: no-repeat;
@@ -40,6 +49,25 @@ body {
 
 }
 
+.sidenav-container {
+    height: 100%;
+  }
+  
+.sidenav {
+    width: 200px;
+    // background: mat-color($my-primary, default);
+}
+  
+.sidenav .mat-toolbar {
+    background: inherit;
+}
+  
+.mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}  
+
 .login-content{
     width: 80%;
     max-width: 1140px;
@@ -54,7 +82,7 @@ body {
 }
 
 .primary {
-    color: mat-color($primary, default);
+    color: mat-color($my-primary, default);
 }
 
 .no-cursor{
@@ -81,6 +109,10 @@ img {
 // text 
 .title-login {
     position: absolute !important;
+}
+
+.text-white {
+    color: #fff !important;
 }
 
 .text-center {
@@ -114,8 +146,14 @@ img {
 }
 
 // margin
+
+
 .m-2 {
     margin: 0.5rem !important;
+}
+
+.ml-1, .mx-1{
+    margin-left: 0.25rem; 
 }
 
 .ml-2, .mx-2{
