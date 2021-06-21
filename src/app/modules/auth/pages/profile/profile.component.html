@@ -1,0 +1,87 @@
+<section fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayoutGap="5px">
+    <mat-card class="mb-2">
+        <mat-card-header>
+            <mat-card-title>Perfil de Usuario</mat-card-title>
+            <mat-card-subtitle>Detalles del usuario</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+                <div fxLayout="row" fxLayout.xs="row wrap" fxLayoutAlign="start start" fxLayoutGap="2px">
+                    <mat-form-field fxFlex.xs="100">
+                        <mat-label for="firstName">Nombre</mat-label>
+                        <input type="text" matInput placeholder="nombre" [value]='user.firstName' disabled>
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex.xs="100">
+                        <mat-label for="lastName">Apellido</mat-label>
+                        <input type="text" matInput placeholder="apellido" [value]="user.lastName" disabled>
+                    </mat-form-field>    
+                </div>
+                
+                <div fxLayout="row" fxLayout.xs="row wrap" fxLayoutAlign="start start" fxLayoutGap="2px">
+                    <mat-form-field fxFlex.xs="100">
+                        <mat-label for="role">Rol</mat-label>
+                        <input type="text" matInput placeholder="Rol" [value]="rol" disabled>
+                    </mat-form-field>
+                    <mat-form-field fxFlex.xs="100">
+                        <mat-label for="isActive">Estado</mat-label>
+                        <input matInput placeholder="Estado" [value]="status" disabled>
+                    </mat-form-field>
+                </div>
+
+            
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Cambio de clave</mat-card-title>
+            <mat-card-subtitle>Ingrese la clave actual, y la nueva.</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="form">
+                <mat-form-field>
+                    <mat-label for="password">Clave</mat-label>
+                    <input 
+                        type="password" 
+                        matInput
+                        formControlName="oldPassword" 
+                        placeholder="clave">
+                    <mat-error> 
+                        {{ showError(this.form.controls.oldPassword) }}
+                    </mat-error>
+                </mat-form-field>
+                <div fxLayout="row" fxLayout.xs="row wrap" fxLayoutAlign="start start" fxLayoutGap="2px">
+                    <mat-form-field fxFlex.xs="100">
+                        <mat-label for="newPassword">Nueva clave</mat-label>
+                        <input 
+                            type="password" 
+                            matInput 
+                            formControlName="password"
+                            placeholder="nueva clave">
+                        <mat-error> 
+                            {{ showError(this.form.controls.password) }}
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field fxFlex.xs="100">
+                        <mat-label for="repeatNewPassword">Repetir nueva clave</mat-label>
+                        <input 
+                            type="password" 
+                            matInput 
+                            formControlName="repeatPassword"
+                            placeholder="repetir nueva clave">
+                        <mat-error> 
+                            {{ showError(this.form.controls.repeatPassword) }}
+                        </mat-error>
+                    </mat-form-field>    
+                </div>
+            </form>
+        </mat-card-content>
+        <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
+                <button mat-raised-button [disabled]="form.invalid" (click)="onSubmit()" color="primary">
+                    <mat-icon>save</mat-icon>
+                    Guardar
+                </button>
+        </mat-card-actions>
+    </mat-card>
+</section>
+

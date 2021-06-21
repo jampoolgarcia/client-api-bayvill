@@ -1,0 +1,23 @@
+<!-- action bar -->
+<mat-card class="my-3 pt-2 pb-1">
+    <!-- filter -->
+    <mat-form-field class="w-100" fxFlex="30" fxFlex.sm="50" fxFlex.xs="50">
+        <input
+            type="search" 
+            matInput 
+            placeholder="Buscar..." 
+            (keyup)="applyFilter($event)"
+            #search>
+    </mat-form-field>
+
+    <div fxFlex fxLayout="row" fxLayoutAlign="end center">
+        <button *ngIf="isAdd" [routerLink]="entity" mat-raised-button color="primary" class="ml-1">
+            <mat-icon>add</mat-icon>
+            <span fxHide.xs>Añadir</span>
+        </button>
+        <button *ngIf="isDownload" [routerLink]="downloadUrl" mat-raised-button color="warn" class="ml-1">
+            <mat-icon>download</mat-icon>
+            <span fxHide.xs>Descargar</span>
+        </button>
+    </div>
+</mat-card>

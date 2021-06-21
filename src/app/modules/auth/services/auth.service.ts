@@ -5,6 +5,7 @@ import { UserI } from '../model/user';
 import { Observable } from 'rxjs';
 import { UserResetI } from '../model/user-rest';
 import { TurnI } from '../model/turn';
+import { map, tap } from 'rxjs/operators';
 
 const url_base = environment.url_base;
 
@@ -15,9 +16,7 @@ export class AuthService {
 
     public url: string = `${url_base}/user`;
 
-    constructor(private _http: HttpClient){
-
-    }
+    constructor(private _http: HttpClient){}
 
     saveRecord(data: UserI): Observable<UserI>{
         return this._http.post<UserI>(this.url, data)
@@ -31,10 +30,35 @@ export class AuthService {
         return this._http.post<boolean>(`${this.url}/reset-password`, data);
     }
 
+    changePassword(id: string, password: string, newPassword: string): Observable<any>{
+      return this._http.post(`${this.url}/change-password/${id}`, { password, newPassword});
+    }
+
+    updateRecordStatusAndRole(recordId: string, role: number, isActive: boolean){
+      return this._http.patch(`${this.url}/${recordId}`, { 'role': role, 'isActive':isActive });
+    }
+
     login(userName: string, password: string): Observable<any>{
         return this._http.post<any>(`${this.url}/login`, {userName, password});
     }
 
+    logout() {
+      let turn = this.getTurn();
+      return this._http.post(`${this.url}/logout`, turn);
+    }
+
+    getAllRecords(){
+      return this._http.get<UserI[]>(this.url)
+          .pipe(
+            map(data => this.excludeCurrentUser(data))
+          );
+    }
+
+    excludeCurrentUser(data: UserI[]): UserI[] {
+      let user = JSON.parse(localStorage.getItem('currentUser')!);
+      let res = data.filter(elem => elem.id != user.id);
+      return res;
+    }
 
     saveSession(data: any): boolean{
    
@@ -66,14 +90,20 @@ export class AuthService {
     setUser(user: UserI): void {
         let user_string = JSON.stringify(user);
         localStorage.setItem("currentUser", user_string);
-      }
+    }
     
-      setToken(token: string): void {
+    setToken(token: string): void {
         localStorage.setItem("accessToken", token);
-      }
+    }
     
-      setTurn(turn: TurnI): void {
+    setTurn(turn: TurnI): void {
         let turn_string = JSON.stringify(turn);
         localStorage.setItem("turn", turn_string);
-      }
+    }
+
+    getTurn(): TurnI | undefined {
+      let turn_string = localStorage.getItem("turn");
+      let turn: TurnI = JSON.parse(turn_string!);
+      return turn;
+    }
 }

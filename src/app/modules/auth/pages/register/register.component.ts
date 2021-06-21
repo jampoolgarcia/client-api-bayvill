@@ -30,7 +30,7 @@ export class RegisterComponent {
     constructor(
         private fb: FormBuilder,
         private _service: AuthService,
-        private _snackBar: MatSnackBar
+        private _snackBar: MatSnackBar,
         ){
         this.formUser = this.fb.group({
             firstName: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(16)]],
