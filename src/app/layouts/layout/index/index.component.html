@@ -5,9 +5,18 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-nav-list class="p-0">
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a *ngFor="let item of listLinkItem" 
+          mat-list-item 
+          [routerLink]="item.link" 
+          routerLinkActive="active">
+        <mat-icon 
+          fontSet="fa" 
+          [fontIcon]="item.icon"
+          class="lg-icon mr-3"
+          color="primary">
+        </mat-icon>
+       {{ item.title }}
+      </a> 
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="ml-0">

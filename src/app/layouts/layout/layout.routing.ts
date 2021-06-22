@@ -20,6 +20,10 @@ const routes: Routes = [
             {
                 path: 'user/edit/:id',
                 component: ProfileComponent
+            },
+            {
+                path: 'doctor',
+                loadChildren: () => import('../../modules/doctor/doctor.module').then(m => m.DoctorModule),
             }
         ]
     }
