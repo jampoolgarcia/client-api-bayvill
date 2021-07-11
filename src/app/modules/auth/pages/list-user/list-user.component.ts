@@ -31,17 +31,6 @@ export class ListUserComponent implements OnInit {
         
     }
 
-    // openDialog(id: string): void{
-
-    //     const dialogRef = this._dialog.open(UserDialogComponent, {
-    //          data: id 
-    //     })
-
-    //     dialogRef.afterClosed().subscribe(res => {
-    //         if(res) this._snackBar.open('Usuario', 'Cerrar');
-    //     })
-    // }
-
     ngOnInit(): void {
         this.fillRecords();
     }

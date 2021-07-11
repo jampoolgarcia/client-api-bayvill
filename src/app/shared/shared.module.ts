@@ -15,12 +15,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './components/nav/nav.component';
 import { TableComponent } from './components/table/table.component';
 import { ActionBarComponent } from './components/action-bar/action-bar.component';
+import { PersonTableComponent } from './components/person-table/person-table.component';
 
 @NgModule({
     declarations: [
         NavComponent,
         TableComponent,
         ActionBarComponent,
+        PersonTableComponent,
     ],
     imports: [
         // core modules
@@ -46,7 +48,8 @@ import { ActionBarComponent } from './components/action-bar/action-bar.component
         // components
         NavComponent,
         TableComponent,
-        ActionBarComponent,   
+        ActionBarComponent,
+        PersonTableComponent,   
     ],
     providers: [
 

@@ -1,1 +1,8 @@
-<p>doctor works!</p>
+<app-action-bar entity="doctor" (search)="filter($event)"></app-action-bar>
+
+<app-person-table
+    [displayedColumns]="displayedColumns"
+    [headerColumns]="headerColumns"
+    [dataSource]="dataSource"
+    [_service]="_service">
+</app-person-table>

@@ -11,7 +11,7 @@
   </mat-card-header>
 
   <mat-card-content>
-      <div 
+       <div 
           fxLayout="row" 
           fxLayout="row" 
           fxLayoutAlign="start center"
@@ -26,22 +26,11 @@
                       #search>
               </mat-form-field>
           </div>
-          <div fxFlex fxLayout="row" fxLayoutAlign="end center">
-              <button *ngIf="isAdd" mat-raised-button color="primary" class="ml-1">
-                  <mat-icon>add</mat-icon>
-                  <span fxHide.xs>Añadir</span>
-              </button>
-              <button *ngIf="isDownload" mat-raised-button color="warn" class="ml-1">
-                  <mat-icon>download</mat-icon>
-                  <span fxHide.xs>Descargar</span>
-              </button>
-          </div>
-      </div>
+      </div> 
       
       <div class="table-container">
           <table class="w-100" mat-table [dataSource]="dataSource" matSort>
   
-            
               <!-- Column -->
               
               <ng-container matColumnDef="{{ item }}" *ngFor="let item of displayedColumns; index as i;">

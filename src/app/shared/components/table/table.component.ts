@@ -21,8 +21,6 @@ export class TableComponent implements AfterViewInit {
   @Input() isLoadding: boolean = true;
   @Input() dataSource!: MatTableDataSource<any>;
   @Input() _service!: any;
-  @Input() isAdd: boolean = true;
-  @Input() isDownload: boolean = false;
   @Input() isDetails: boolean = true;
   @Input() isEdit: boolean = true; 
 

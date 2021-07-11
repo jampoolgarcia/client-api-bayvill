@@ -1,0 +1,60 @@
+<mat-card class="table-container my-3" [ngClass]="{'table-card': isLoadding}">
+    <!-- spinner -->
+    <div class="loading-shade" *ngIf="isLoadding">
+        <mat-spinner></mat-spinner>
+    </div>
+    <!-- table -->
+    <table class="w-100" mat-table [dataSource]="dataSource" matSort>
+    
+                <!-- Columns -->
+                <ng-container matColumnDef="{{ item }}" *ngFor="let item of displayedColumns; index as i;">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ headerColumns[i] }}</th>
+                    <td mat-cell *matCellDef="let row">
+                        {{ row[item] }}
+                  </td>
+                </ng-container>
+
+                
+                <!-- Actions column -->
+                <ng-container matColumnDef="action" *ngIf="isEdit || isDetails">
+                    <th mat-header-cell *matHeaderCellDef class="w-px-100"></th>
+                    <td mat-cell *matCellDef="let row">
+                        <div fxHide.xs>
+                            <button *ngIf="isEdit" mat-icon-button color="primary">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button *ngIf="isDetails" mat-icon-button color="accent">
+                                <mat-icon>list_alt</mat-icon>
+                            </button>
+                        </div>
+   
+                          <button  fxShow.xs="true" fxShow="false" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                              <mat-icon>more_vert</mat-icon>
+                          </button>
+                          <mat-menu #menu="matMenu">
+                              <button mat-menu-item>
+                                  <mat-icon>edit</mat-icon>
+                                  <span>Editar</span>
+                              </button>
+                              <button mat-menu-item>
+                                  <mat-icon>list_alt</mat-icon>
+                                  <span>Detalles</span>
+                              </button>
+                          </mat-menu>
+                                            
+                    </td>
+                </ng-container>
+                
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4"> 
+                        {{ (search.length === 0) ? 'No hay ningun registro' : 'No hay datos que coincidan con "'+search+'"' }}   
+                    </td>
+                </tr>
+        </table>
+            <!-- paginator -->
+        <mat-paginator [pageSizeOptions]="[5, 10, 25]"  #paginator></mat-paginator>    
+</mat-card>
+
